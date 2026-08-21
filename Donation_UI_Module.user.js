@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Donation UI Module
 // @namespace    https://github.com/ShavedW00kie/
-// @version      1.1
+// @version      1.2
 // @description  A reusable module to inject Buy-Me-A-Coffee and Torn-Tip links.
 // @author       ShavedW00kie (Torn: ThaWookie [2954173] )
 // @match        https://www.torn.com/*
@@ -91,11 +91,13 @@
             bmcLink.className = "tw-support-btn tw-bmc";
             bmcLink.innerHTML = `☕ Buy Me a Coffee`;
 
-            // Torn Tip Link (Xanax)
+            // NEW — replace with this:
             const tipLink = document.createElement('a');
-            // Directs user to the item send page with ID and UID pre-filled
-            tipLink.href = `https://www.torn.com/item.php#XID=${this.xanaxItemId}&action=send&uid=${this.tornUserId}`;
+            tipLink.href = `https://www.torn.com/item.php`;
+            tipLink.target = "_blank";
+            tipLink.rel = "noopener noreferrer";
             tipLink.className = "tw-support-btn tw-torn-tip";
+            tipLink.title = `Opens Items — search "Xanax", tap Send, enter ThaWookie [${this.tornUserId}]`;
             tipLink.innerHTML = `💊 Send a Xanax Tip`;
 
             container.appendChild(bmcLink);
